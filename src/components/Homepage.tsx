@@ -32,12 +32,23 @@ const Homepage = () => {
           .MuiTabs-indicator {
             transition: all 0s !important;
           }
+          @media (max-width: 600px) {
+            body {
+              padding: 0;
+              text-align: center;
+            }
+            .MuiCard-root {
+              width: 100%;
+              box-sizing: border-box;
+            }
+          }
         `}
       </style>
       <Typography
         variant="h2"
         component="h1"
         gutterBottom
+        align="center"
         style={{ color: "#3f51b5", fontWeight: "bold" }}
       >
         Face Recognizer
