@@ -9,7 +9,7 @@ const ImageUpload = () => {
   const dispatch = useAppDispatch();
   const imageRef = useRef<HTMLImageElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const uploadedImages = useAppSelector((state) => state.webcam.capturedImages); // Select the uploaded images from the state
+  const uploadedImages = useAppSelector((state) => state.webcam.capturedImages);
 
   useEffect(() => {
     Promise.all([
@@ -72,7 +72,7 @@ const ImageUpload = () => {
   };
 
   const handleClick = () => {
-    inputRef.current?.click(); 
+    inputRef.current?.click();
   };
 
   const clearUploadedImages = () => {

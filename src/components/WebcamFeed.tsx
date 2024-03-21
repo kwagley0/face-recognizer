@@ -68,7 +68,6 @@ const WebcamFeed = () => {
         context.drawImage(video, 0, 0);
         const dataUrl = canvas.toDataURL("image/png");
 
-        // Detect faces
         const img = await faceapi.fetchImage(dataUrl);
         const detections = await faceapi
           .detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
@@ -76,7 +75,6 @@ const WebcamFeed = () => {
           .withFaceExpressions()
           .withAgeAndGender();
 
-        // Draw overlays on the canvas
         const resizedDetections = faceapi.resizeResults(detections, {
           width: canvas.width,
           height: canvas.height,
@@ -89,7 +87,6 @@ const WebcamFeed = () => {
           const gender = detection.gender;
           const box = detection.detection.box;
 
-          // Get the dominant emotion
           const emotion = Object.keys(detection.expressions).reduce((a, b) =>
             (detection.expressions as any)[a] >
             (detection.expressions as any)[b]
@@ -97,16 +94,13 @@ const WebcamFeed = () => {
               : b
           );
 
-          // Draw the box with the age, gender, and emotion as the label
           const drawBox = new faceapi.draw.DrawBox(box, {
             label: `${emotion}, ${gender}, ${age} years`,
           });
           drawBox.draw(canvas);
         });
-        // Update the image with the overlays
         const updatedDataUrl = canvas.toDataURL("image/png");
 
-        // Add the updated image to the state
         dispatch(addImage(updatedDataUrl));
       }
     }

@@ -10,7 +10,7 @@ const Homepage = () => {
   const currentTab = useAppSelector((state) => state.webcam.currentTab);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
-    dispatch(setCurrentTab(newValue)); 
+    dispatch(setCurrentTab(newValue));
   };
 
   const homepageStyle: React.CSSProperties = {
@@ -27,7 +27,7 @@ const Homepage = () => {
       <style>
         {`
           body {
-            background-color: #f5f5f5; // Change this to your preferred color
+            background-color: #f5f5f5;
           }
           .MuiTabs-indicator {
             transition: all 0s !important;

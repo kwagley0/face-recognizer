@@ -41,12 +41,10 @@ export const webcamSlice = createSlice({
       state.modelsLoaded = action.payload;
     },
     openModal: (state: WebcamState, action: PayloadAction<string>) => {
-      // Add this reducer
       state.modalOpen = true;
       state.selectedImage = action.payload;
     },
     closeModal: (state: WebcamState) => {
-      // Add this reducer
       state.modalOpen = false;
       state.selectedImage = "";
     },
